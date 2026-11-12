@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-grouped: #F2F2F7;
+  --bg-card: #FFFFFF;
+  --bg-tertiary: #E5E5EA;
+  --bg-sheet: #F2F2F7;
+  --text-primary: #000000;
+  --text-secondary: #8E8E93;
+  --text-tertiary: #AEAEB2;
+  --label-primary: #000000;
+  --label-secondary: #8E8E93;
+  --label-tertiary: #AEAEB2;
+  --separator: rgba(60, 60, 67, 0.12);
+  --ios-blue: #007AFF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+}
+
+.dark {
+  --bg-grouped: #000000;
+  --bg-card: #1C1C1E;
+  --bg-tertiary: #2C2C2E;
+  --bg-sheet: #1C1C1E;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8E8E93;
+  --text-tertiary: #636366;
+  --label-primary: #FFFFFF;
+  --label-secondary: #8E8E93;
+  --label-tertiary: #636366;
+  --separator: rgba(84, 84, 88, 0.45);
+  --ios-blue: #0A84FF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9F0A;
+}
+
+/* Global iOS WebKit Ergonomics */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: var(--bg-grouped);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Explicit text selection on input fields & readable text */
+input,
+textarea,
+select,
+.selectable-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Strict iOS Safari Auto-Zoom Prevention */
+input,
+textarea,
+select {
+  font-size: max(16px, 1rem) !important;
+}
+
+/* Hidden Scrollbars with Smooth Touch Momentum */
+.no-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar,
+body,
+div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.touch-momentum {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* iOS Safe Area Padding Utilities */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+.top-safe {
+  top: env(safe-area-inset-top, 0px);
+}
+
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Tactile iOS Press Animation */
+.ios-press {
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms ease;
+}
+
+.ios-press:active {
+  transform: scale(0.975);
+  opacity: 0.85;
+}
+
+/* Tabular Numbers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Print Stylesheet for Statement Export */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  #app-shell {
+    display: none !important;
+  }
+
+  #printable-statement {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+}
